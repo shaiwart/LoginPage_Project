@@ -21,17 +21,10 @@ public class UserController {
 	private UserService userService; 
 	
 	
-	@PostMapping("/api/user")  
+	@PostMapping("/api/add/user")  
 	public void addUser(@RequestBody User user) {	// Here, void or User ??? 
 		userService.addUser(user); 
 	} 
-	
-	
-	@GetMapping("/api/user/{userId}") 
-	public UserInfoDTO getUser(@PathVariable Integer userId) {
-		return null; 
-	}
-	
 	
 	@PostMapping("/api/login") 
 	public Integer loginUser(@RequestBody UserLoginDTO userLoginDto) {
@@ -40,4 +33,13 @@ public class UserController {
 		
 		return userService.loginUser(userName, password); 
 	}
+	
+	
+	@GetMapping("/api/user/{userId}") 
+	public UserInfoDTO getUser(@PathVariable Integer userId) {
+		return userService.getUser(userId); 
+	}
+	
+	
+	
 }

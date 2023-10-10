@@ -12,6 +12,6 @@ import jakarta.transaction.Transactional;
 @Transactional
 public interface UserRepository extends JpaRepository<User, Integer> {
 	
-	@Query(value = "", nativeQuery = true) 
+	@Query(value = "Select user_id from User where user_name = :userName and password = :password", nativeQuery = true) 
 	public Integer loginUser(@Param("userName") String userName, @Param("password") String password);   
 }
